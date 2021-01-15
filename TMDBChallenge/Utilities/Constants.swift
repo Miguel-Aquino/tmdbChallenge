@@ -16,12 +16,13 @@ struct Keys {
 
 struct ApiURL {
     static let baseURL = "https://api.themoviedb.org/3/movie/"
-    static let selectedMovie = baseURL + "movie"
-    static let image = "https://image.tmdb.org/t/p/w185/"
+    static let selectedMovie = baseURL
+    static let image = "https://image.tmdb.org/t/p/w342/"
 }
 
 struct Images {
     static let emptyImage = UIImage(named: "empty_image")
+    static let back = UIImageView(image: UIImage(named: "back_white"))
 }
 
 enum MovieType {

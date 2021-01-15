@@ -62,7 +62,7 @@ class MovieService {
      */
     func getSelectedMovie(movieId: Int, language: String, completion: @escaping (Result< SelectedMovie, APIError> ) -> Void) {
         
-        guard let url = URL(string: ApiURL.selectedMovie + "/\(movieId)") else {
+        guard let url = URL(string: ApiURL.selectedMovie + "\(movieId)") else {
             completion(.failure(.invalidURL))
             return
         }

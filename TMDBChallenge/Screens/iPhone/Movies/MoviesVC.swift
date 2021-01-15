@@ -115,13 +115,12 @@ extension MoviesVC: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: false)
         
-        //        if !movieViewModelList.isEmpty{
-        //            let selectedMovieVC = SelectedMovieViewController(nibName: "SelectedMovieViewController", bundle: nil)
-        //            selectedMovieVC.movieId = movieViewModelList[indexPath.row].id
-        //            selectedMovieVC.backdropURL = movieViewModelList[indexPath.row].backdropURL
-        //            // .backdropURL = movieViewModelList[indexPath.row].backdropURL
-        //            self.navigationController?.pushViewController(selectedMovieVC, animated: true)
-        //        }
+        if !movieViewModelList.isEmpty{
+            let selectedMovieVC = SelectedMovieVC(nibName: SelectedMovieVC.reuseId, bundle: nil)
+            selectedMovieVC.movieId = movieViewModelList[indexPath.row].id
+            selectedMovieVC.posterURL = movieViewModelList[indexPath.row].posterURL
+            self.present(selectedMovieVC, animated: true, completion: nil)
+        }
     }
 }
 
@@ -132,9 +131,32 @@ extension MoviesVC : UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let collectionWidth = collectionView.bounds.width
+        var cellWidth = collectionView.bounds.width
+        var cellHeight: CGFloat = 0
         
-        return CGSize(width: collectionWidth / 2 - 10 , height: 280)
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            cellHeight = 320
+            switch UIDevice.current.orientation{
+            case .portrait:
+                cellWidth = cellWidth / 3 - 10
+            case .landscapeLeft, .landscapeRight, .unknown :
+                cellWidth = cellWidth / 4 - 10
+            default:
+                cellWidth = cellWidth / 3 - 10
+            }
+        } else {
+            cellHeight = 220
+            switch UIDevice.current.orientation{
+            case .portrait:
+                cellWidth = cellWidth / 2 - 10
+            case .landscapeLeft, .landscapeRight, .unknown :
+                cellWidth = cellWidth / 3 - 10
+            default:
+                cellWidth = cellWidth / 2 - 10
+            }
+        }
+        
+        return CGSize(width: cellWidth , height: cellHeight)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
