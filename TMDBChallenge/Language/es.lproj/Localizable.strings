@@ -1,0 +1,23 @@
+/* 
+ Localizables(Spanish).strings
+  TMDBChallenge
+
+  Created by Miguel Aquino on 14/01/21.
+  
+*/
+
+// MoviesVC
+"Movies" = "Películas";
+"now.playing" = "En cines";
+"in.theaters" = "Ahora en cines";
+"popular" = "Populares";
+"most.popular" = "Las más populares";
+"top.rated" = "Valorados";
+"top.rated.films" = "Las más valoradas";
+"now.playing.in.theathers" = "Now playing in theaters";
+"change.language" = "¿Deseas cambiar idioma?";
+"choose.language" = "Elige tu idioma";
+"english.language" = "Inglés";
+"spanish.language" = "Español";
+"cancel" = "Cancelar";
+"refresh.catalog" = "Refrescar Catálogo";
