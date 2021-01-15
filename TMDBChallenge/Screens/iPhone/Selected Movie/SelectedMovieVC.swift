@@ -15,16 +15,20 @@ class SelectedMovieVC: UIViewController {
     @IBOutlet weak var yearLabel: UILabel!
     @IBOutlet weak var runtimeLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var genresLabel: UILabel!
+    @IBOutlet weak var summaryView: UIView!
     @IBOutlet weak var summaryTextView: UITextView!
     @IBOutlet weak var closeButtonView: UIView!
     @IBOutlet weak var favoritesView: UIView!
     @IBOutlet weak var favoritesLabel: UILabel!
+    @IBOutlet weak var posterLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var posterTrailingConstraint: NSLayoutConstraint!
     
     //MARK: - Properties
     static let reuseId = "SelectedMovieVC"
     var movieId: Int?
     var viewModel: SelectedMovieViewModel?
-    var posterURL: String?
+    var backdropUrl: String?
     
     //MARK:- LifeCycle
     
@@ -45,6 +49,11 @@ extension SelectedMovieVC {
     private func setupVC() {
         ViewProperties.configureCircularViewWithShadow(backgroundView: closeButtonView)
         ViewProperties.configureViewWithRoundBorderAndShadow(backgroundView: favoritesView)
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            posterLeadingConstraint.constant = self.view.bounds.width / 3
+            posterTrailingConstraint.constant = self.view.bounds.width / 3
+        }
+        posterImageView.contentMode = .scaleAspectFill
     }
     
     private func loadMovieDetails(){
@@ -64,14 +73,16 @@ extension SelectedMovieVC {
                     self.yearLabel.text = self.viewModel?.yearOfRelease
                     self.scoreLabel.text = self.viewModel?.score
                     self.summaryTextView.text = self.viewModel?.overview
+                    self.genresLabel.text = self.viewModel?.allGenres
                 }
             case .failure: break
             }
         }
         
-        guard let posterURL = posterURL else { return }
+        guard let posterURL = backdropUrl else { return }
         MovieService.shared.getImage(from: posterURL, completed: { image in
             DispatchQueue.main.async {
+                self.favoritesView.isHidden = false
                 self.posterImageView.image = image != nil ? image : Images.emptyImage
             }
         })

@@ -17,7 +17,7 @@ struct Keys {
 struct ApiURL {
     static let baseURL = "https://api.themoviedb.org/3/movie/"
     static let selectedMovie = baseURL
-    static let image = "https://image.tmdb.org/t/p/w342/"
+    static let image = "https://image.tmdb.org/t/p/"
 }
 
 struct Images {

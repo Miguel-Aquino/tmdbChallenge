@@ -51,6 +51,9 @@ extension MoviesVC {
         MoviesHeader.movieSegmentDelegate = self
         
         self.navigationController?.navigationBar.isHidden = true
+        
+        let orientation = UIInterfaceOrientation.portrait.rawValue
+        UIDevice.current.setValue(orientation, forKey: "orientation")
     }
     
     private func setupPullToRefresh(){
@@ -118,7 +121,7 @@ extension MoviesVC: UICollectionViewDataSource, UICollectionViewDelegate {
         if !movieViewModelList.isEmpty{
             let selectedMovieVC = SelectedMovieVC(nibName: SelectedMovieVC.reuseId, bundle: nil)
             selectedMovieVC.movieId = movieViewModelList[indexPath.row].id
-            selectedMovieVC.posterURL = movieViewModelList[indexPath.row].posterURL
+            selectedMovieVC.backdropUrl = movieViewModelList[indexPath.row].backdropURL
             self.present(selectedMovieVC, animated: true, completion: nil)
         }
     }
@@ -139,7 +142,7 @@ extension MoviesVC : UICollectionViewDelegateFlowLayout {
             switch UIDevice.current.orientation{
             case .portrait:
                 cellWidth = cellWidth / 3 - 10
-            case .landscapeLeft, .landscapeRight, .unknown :
+            case .landscapeLeft, .landscapeRight :
                 cellWidth = cellWidth / 4 - 10
             default:
                 cellWidth = cellWidth / 3 - 10
@@ -149,7 +152,8 @@ extension MoviesVC : UICollectionViewDelegateFlowLayout {
             switch UIDevice.current.orientation{
             case .portrait:
                 cellWidth = cellWidth / 2 - 10
-            case .landscapeLeft, .landscapeRight, .unknown :
+            case .landscapeLeft, .landscapeRight :
+                cellHeight = 270
                 cellWidth = cellWidth / 3 - 10
             default:
                 cellWidth = cellWidth / 2 - 10
@@ -178,7 +182,7 @@ extension MoviesVC : UICollectionViewDelegateFlowLayout {
 extension MoviesVC: LanguageDelegate {
     
     func chooseLanguage() {
-        let alert = UIAlertController(title: "change.language".localized, message: "choose.language".localized, preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "change.language".localized, message: "choose.language".localized, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "english.language".localized, style: .default, handler: { (_) in
             UserDefaults.standard.set("en", forKey: "app_lang")
             self.resetCollectionView()

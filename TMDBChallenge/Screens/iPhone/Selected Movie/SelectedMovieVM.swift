@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SelectedMovieViewModel {
+struct SelectedMovieViewModel {
     private let selectedMovie: SelectedMovie
     
     init(_ selectedMovie: SelectedMovie) {
@@ -56,5 +56,20 @@ class SelectedMovieViewModel {
     
     var score: String {
         return "\(self.selectedMovie.vote_average) / 10"
+    }
+    
+    var allGenres: String {
+        let genres = selectedMovie.genres
+        
+        var allGenres = ""
+        for (index,genre) in genres.enumerated(){
+            if index == 0 {
+                allGenres = genre.name
+            } else {
+                allGenres += ", \(genre.name)"
+            }
+        }
+        
+        return allGenres
     }
 }

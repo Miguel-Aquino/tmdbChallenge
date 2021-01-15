@@ -41,6 +41,11 @@ struct MoviesViewModel {
 
     var posterURL: String {
         guard let poster_path = movie.poster_path else { return "" }
-        return ApiURL.image + "\(poster_path)"
+        return ApiURL.image + "w342/\(poster_path)"
     }
+    
+    var backdropURL: String {
+            guard let backdrop_path = movie.backdrop_path else { return "" }
+            return ApiURL.image + "original/\(backdrop_path)"
+        }
 }
