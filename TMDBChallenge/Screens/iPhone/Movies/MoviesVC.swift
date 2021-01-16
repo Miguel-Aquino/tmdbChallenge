@@ -76,15 +76,20 @@ extension MoviesVC {
     private func loadMovies(movieType: MovieType){
         guard let currentLanguage = UserDefaults.standard.string(forKey: "app_lang")  else { return }
         
+        showActivityIndicator()
         MovieService.init().getMovies(movieType: movieType, language: currentLanguage) { [weak self] response in
             guard let self = self else { return }
             switch response {
             case .success(let movies):
                 self.movieViewModelList = movies.map( { return MoviesViewModel($0)})
                 DispatchQueue.main.async {
+                    self.hideActivityIndicator()
                     self.collectionView.reloadData()
                 }
-            case .failure: break
+            case .failure:
+                DispatchQueue.main.async {
+                    self.hideActivityIndicator()
+                }
             }
         }
     }

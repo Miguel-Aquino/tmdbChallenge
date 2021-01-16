@@ -52,6 +52,7 @@ extension SelectedMovieVC {
         if UIDevice.current.userInterfaceIdiom == .pad {
             posterLeadingConstraint.constant = self.view.bounds.width / 3
             posterTrailingConstraint.constant = self.view.bounds.width / 3
+            summaryTextView.font = .systemFont(ofSize: 20)
         }
         posterImageView.contentMode = .scaleAspectFill
     }
@@ -62,7 +63,6 @@ extension SelectedMovieVC {
         
         MovieService.shared.getSelectedMovie(movieId: movieId, language: currentLanguage) { [weak self] response in
             guard let self = self else { return }
-            
             switch response {
             case .success(let movieDetails):
                 DispatchQueue.main.async {
@@ -80,8 +80,10 @@ extension SelectedMovieVC {
         }
         
         guard let posterURL = backdropUrl else { return }
+        showActivityIndicator()
         MovieService.shared.getImage(from: posterURL, completed: { image in
             DispatchQueue.main.async {
+                self.hideActivityIndicator()
                 self.favoritesView.isHidden = false
                 self.posterImageView.image = image != nil ? image : Images.emptyImage
             }

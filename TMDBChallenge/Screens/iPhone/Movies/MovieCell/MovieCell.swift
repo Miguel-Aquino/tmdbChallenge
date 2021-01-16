@@ -40,6 +40,10 @@ class MovieCell: UICollectionViewCell {
         layer.shadowOpacity = 0.5
     }
     
+    override func prepareForReuse() {
+        self.backgroundImageView.image = Images.emptyImage
+    }
+    
     private func loadImage(fromURL: String) {
         MovieService.shared.getImage(from: fromURL, completed: { image in
             DispatchQueue.main.async {

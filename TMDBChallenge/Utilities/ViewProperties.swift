@@ -25,4 +25,20 @@ class ViewProperties {
         backgroundView.layer.shouldRasterize = false
         backgroundView.layer.cornerRadius = 8
     }
+    
+    static func animateViewInfinitely(backgroundView: UIView ){
+        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { (timer) in
+            if backgroundView.window != nil {
+                UIView.animate(withDuration: 0.25, delay: 0, options: [.curveEaseIn], animations: {
+                    backgroundView.transform = CGAffineTransform(rotationAngle: .pi)
+                }, completion: { (_) in
+                    UIView.animate(withDuration: 0.25, delay: 0, options: [.curveEaseOut], animations: {
+                        backgroundView.transform = CGAffineTransform(rotationAngle: .pi * 2)
+                    }, completion: nil)})
+            }
+            else {
+                timer.invalidate()
+            }
+        }
+    }
 }
