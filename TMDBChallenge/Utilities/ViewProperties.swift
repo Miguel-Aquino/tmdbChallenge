@@ -41,4 +41,14 @@ class ViewProperties {
             }
         }
     }
+    
+    static func animateBounceEffect(backgroundView: UIView ){
+        backgroundView.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
+        
+        UIView.animate(withDuration: 2.0, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 20.0, options: .allowUserInteraction, animations: { [] in
+            backgroundView.isHidden = false
+            backgroundView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        },
+        completion: nil)
+    }
 }

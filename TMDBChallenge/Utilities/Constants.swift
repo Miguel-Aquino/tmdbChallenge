@@ -12,6 +12,8 @@ import UIKit
 struct Keys {
     static let API_KEY = "api_key"
     static let LANGUAGE = "language"
+    static let ORIENTATION = "orientation"
+    static let APP_LANGUAGE = "app_lang"
 }
 
 struct ApiURL {

@@ -20,15 +20,15 @@ enum APIError: Error {
     var localizedDescription : String{
         switch self {
         case .unknownError:
-            return "Unknown error occurred"
+            return "error.unknown".localized
         case .invalidURL:
-            return "Invalid URL"
+            return "error.invalidURL".localized
         case .invalidResponse:
-            return "Invalid response from the server"
+            return "error.response".localized
         case .invalidData:
-            return "Invalid data received from the server"
+            return "error.data".localized
         case .decodeError:
-            return "Error decoding data"
+            return "error.decode".localized
         }
     }
 }

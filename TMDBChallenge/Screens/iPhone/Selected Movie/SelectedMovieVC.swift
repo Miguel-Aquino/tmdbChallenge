@@ -19,10 +19,11 @@ class SelectedMovieVC: UIViewController {
     @IBOutlet weak var summaryView: UIView!
     @IBOutlet weak var summaryTextView: UITextView!
     @IBOutlet weak var closeButtonView: UIView!
-    @IBOutlet weak var favoritesView: UIView!
-    @IBOutlet weak var favoritesLabel: UILabel!
+    @IBOutlet weak var trailerView: UIView!
+    @IBOutlet weak var trailerLabel: UILabel!
     @IBOutlet weak var posterLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var posterTrailingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var trailerViewConstraint: NSLayoutConstraint!
     
     //MARK: - Properties
     static let reuseId = "SelectedMovieVC"
@@ -48,10 +49,11 @@ extension SelectedMovieVC {
     
     private func setupVC() {
         ViewProperties.configureCircularViewWithShadow(backgroundView: closeButtonView)
-        ViewProperties.configureViewWithRoundBorderAndShadow(backgroundView: favoritesView)
+        ViewProperties.configureViewWithRoundBorderAndShadow(backgroundView: trailerView)
         if UIDevice.current.userInterfaceIdiom == .pad {
             posterLeadingConstraint.constant = self.view.bounds.width / 3
             posterTrailingConstraint.constant = self.view.bounds.width / 3
+            trailerViewConstraint.constant = self.view.bounds.width / 3 + 10
             summaryTextView.font = .systemFont(ofSize: 20)
         }
         posterImageView.contentMode = .scaleAspectFill
@@ -84,7 +86,8 @@ extension SelectedMovieVC {
         MovieService.shared.getImage(from: posterURL, completed: { image in
             DispatchQueue.main.async {
                 self.hideActivityIndicator()
-                self.favoritesView.isHidden = false
+                self.trailerView.isHidden = false
+                ViewProperties.animateBounceEffect(backgroundView: self.trailerView)
                 self.posterImageView.image = image != nil ? image : Images.emptyImage
             }
         })

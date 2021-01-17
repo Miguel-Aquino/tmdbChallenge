@@ -21,3 +21,11 @@
 "spanish.language" = "Spanish";
 "cancel" = "Cancel";
 "refresh.catalog" = "Refresh Catalog";
+
+"error" = "Error";
+"error.unknown" = "An unknown error has occurred";
+"error.invalidURL" = "Please verify the URL";
+"error.response" = "Invalid response from the server";
+"error.data" = "Invalid data received from the server";
+"error.decode" = "Cannot decode data";
+"ok" = "Ok";

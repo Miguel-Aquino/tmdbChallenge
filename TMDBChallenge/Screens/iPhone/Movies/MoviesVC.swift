@@ -53,7 +53,7 @@ extension MoviesVC {
         self.navigationController?.navigationBar.isHidden = true
         
         let orientation = UIInterfaceOrientation.portrait.rawValue
-        UIDevice.current.setValue(orientation, forKey: "orientation")
+        UIDevice.current.setValue(orientation, forKey: Keys.ORIENTATION )
     }
     
     private func setupPullToRefresh(){
@@ -74,26 +74,38 @@ extension MoviesVC {
     }
     
     private func loadMovies(movieType: MovieType){
-        guard let currentLanguage = UserDefaults.standard.string(forKey: "app_lang")  else { return }
+        guard let currentLanguage = UserDefaults.standard.string(forKey: Keys.APP_LANGUAGE)  else { return }
         
         showActivityIndicator()
         MovieService.init().getMovies(movieType: movieType, language: currentLanguage) { [weak self] response in
             guard let self = self else { return }
             switch response {
-            case .success(let movies):
+            case .success (let movies):
                 self.movieViewModelList = movies.map( { return MoviesViewModel($0)})
                 DispatchQueue.main.async {
                     self.hideActivityIndicator()
                     self.collectionView.reloadData()
                 }
-            case .failure:
+            case .failure (let error):
                 DispatchQueue.main.async {
                     self.hideActivityIndicator()
+                    self.showError(error: error.localizedDescription)
                 }
             }
         }
     }
     
+    func showError(error: String){
+        let alert = UIAlertController(title: "error".localized,
+                                      message: error,
+                                      preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "ok".localized,
+                                      style: .default,
+                                      handler: nil ))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 
 
@@ -187,18 +199,27 @@ extension MoviesVC : UICollectionViewDelegateFlowLayout {
 extension MoviesVC: LanguageDelegate {
     
     func chooseLanguage() {
-        let alert = UIAlertController(title: "change.language".localized, message: "choose.language".localized, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "english.language".localized, style: .default, handler: { (_) in
-            UserDefaults.standard.set("en", forKey: "app_lang")
-            self.resetCollectionView()
-        }))
+        let alert = UIAlertController(title: "change.language".localized,
+                                      message: "choose.language".localized,
+                                      preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: "spanish.language".localized, style: .default, handler: { (_) in
-            UserDefaults.standard.set("es", forKey: "app_lang")
-            self.resetCollectionView()
-        }))
+        alert.addAction(UIAlertAction(title: "english.language".localized,
+                                      style: .default,
+                                      handler: { (_) in
+                                        UserDefaults.standard.set("en", forKey: "app_lang")
+                                        self.resetCollectionView()
+                                      }))
         
-        alert.addAction(UIAlertAction(title: "cancel".localized, style: .destructive, handler: nil))
+        alert.addAction(UIAlertAction(title: "spanish.language".localized,
+                                      style: .default,
+                                      handler: { (_) in
+                                        UserDefaults.standard.set("es", forKey: "app_lang")
+                                        self.resetCollectionView()
+                                      }))
+        
+        alert.addAction(UIAlertAction(title: "cancel".localized,
+                                      style: .destructive,
+                                      handler: nil))
         
         self.present(alert, animated: true, completion: nil)
     }

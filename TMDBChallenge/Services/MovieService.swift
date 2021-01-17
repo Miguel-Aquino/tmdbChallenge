@@ -24,7 +24,6 @@ class MovieService {
             completion(.failure(.invalidURL))
             return
         }
-        
         guard var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false) else { return }
         
         var queryItem = [URLQueryItem(name: Keys.API_KEY,  value: apiKey)]
@@ -36,6 +35,7 @@ class MovieService {
         URLSession.shared.dataTask(with: finalURL, completionHandler: {( data, response ,error) in
             if let _ = error {
                 completion(.failure(.unknownError))
+                return
             }
             
             guard let data = data else {
@@ -77,6 +77,7 @@ class MovieService {
         URLSession.shared.dataTask(with: finalURL, completionHandler: {( data, response ,error) in
             if let _ = error {
                 completion(.failure(.unknownError))
+                return
             }
             
             guard let data = data else {
