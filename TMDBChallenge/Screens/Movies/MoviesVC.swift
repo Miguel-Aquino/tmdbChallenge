@@ -68,8 +68,8 @@ extension MoviesVC {
         refreshController.addTarget(self, action: #selector(refreshMovies),
                                     for: UIControl.Event.valueChanged)
         refreshController.attributedTitle = NSAttributedString(string: "refresh.catalog".localized,
-                                                               attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 15)])
-        refreshController.tintColor = .black
+                                                               attributes: [NSAttributedString.Key.foregroundColor: UIColor.label, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 15)])
+        refreshController.tintColor = .label
         collectionView.refreshControl = refreshController
     }
     
