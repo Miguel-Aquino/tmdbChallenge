@@ -214,6 +214,8 @@
 		EFB4A28E25B0B4AE00B74754 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				EFB4A2E525B0C72B00B74754 /* Movies */,
+				EF4CFB2125B1E33200D9BCAC /* Selected Movie */,
 				EFB4A29025B0B4C200B74754 /* iPhone */,
 			);
 			path = Screens;
@@ -222,8 +224,6 @@
 		EFB4A29025B0B4C200B74754 /* iPhone */ = {
 			isa = PBXGroup;
 			children = (
-				EFB4A2E525B0C72B00B74754 /* Movies */,
-				EF4CFB2125B1E33200D9BCAC /* Selected Movie */,
 			);
 			path = iPhone;
 			sourceTree = "<group>";
