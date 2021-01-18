@@ -15,6 +15,7 @@ To run the project simply open the "TMDBChallenge.xcodeproj".
 - Pull to refresh
 - Support for `landscape` and `portrait` orientation
 - Error handling when making network calls
+- Images are stored in cache
 - Unit Tests
 
 ## Demo
