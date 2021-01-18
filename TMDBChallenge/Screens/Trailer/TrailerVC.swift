@@ -15,7 +15,17 @@ class TrailerVC: UIViewController {
     @IBOutlet weak var closeView: UIView!
     
     //MARK:- Properties
+    static let reuseId = "TrailerVC"
+    var trailerId: String
     
+    init(trailerId: String) {
+        self.trailerId = trailerId
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,11 +46,8 @@ extension TrailerVC {
     }
     
     func loadTrailer() {
-        
-        guard let trailerURL = URL(string: "https://www.youtube.com/embed/n9G5PlOaqWM") else { return }
-        
+        guard let trailerURL = URL(string: ApiURL.youtubeURL + "\(trailerId)") else { return }
         let request = URLRequest(url: trailerURL)
-        
         webView.load(request)
     }
     

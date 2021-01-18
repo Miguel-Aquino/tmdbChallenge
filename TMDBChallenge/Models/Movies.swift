@@ -8,7 +8,7 @@
 import Foundation
 
 /**
- Model used to represent the data being loaded in the `MoviesVC` collectionView.
+ Entity used to represent the data being loaded in the `MoviesVC` collectionView.
  */
 struct Movies: Codable {
     var results: [Movie]

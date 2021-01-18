@@ -211,14 +211,14 @@ extension MoviesVC: LanguageDelegate {
         alert.addAction(UIAlertAction(title: "english.language".localized,
                                       style: .default,
                                       handler: { (_) in
-                                        UserDefaults.standard.set("en", forKey: "app_lang")
+                                        UserDefaults.standard.set("en", forKey: Keys.APP_LANGUAGE)
                                         self.resetCollectionView()
                                       }))
         
         alert.addAction(UIAlertAction(title: "spanish.language".localized,
                                       style: .default,
                                       handler: { (_) in
-                                        UserDefaults.standard.set("es", forKey: "app_lang")
+                                        UserDefaults.standard.set("es", forKey: Keys.APP_LANGUAGE)
                                         self.resetCollectionView()
                                       }))
         

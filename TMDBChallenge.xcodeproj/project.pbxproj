@@ -17,6 +17,7 @@
 		EF4CFB2D25B21C0200D9BCAC /* ViewProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4CFB2C25B21C0200D9BCAC /* ViewProperties.swift */; };
 		EF4CFB3225B21CE700D9BCAC /* SelectedMovieVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4CFB3125B21CE700D9BCAC /* SelectedMovieVM.swift */; };
 		EF52722E25B2AAAC0025AB39 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF52722D25B2AAAC0025AB39 /* ActivityIndicator.swift */; };
+		EF57E09E25B5428B00B2A5A2 /* Trailers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF57E09D25B5428B00B2A5A2 /* Trailers.swift */; };
 		EF6AC4DF25B507C3003A109F /* TrailerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6AC4DD25B507C3003A109F /* TrailerVC.swift */; };
 		EF6AC4E025B507C3003A109F /* TrailerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF6AC4DE25B507C3003A109F /* TrailerVC.xib */; };
 		EFB4A25C25B0B40900B74754 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB4A25B25B0B40900B74754 /* AppDelegate.swift */; };
@@ -69,6 +70,7 @@
 		EF4CFB2C25B21C0200D9BCAC /* ViewProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProperties.swift; sourceTree = "<group>"; };
 		EF4CFB3125B21CE700D9BCAC /* SelectedMovieVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedMovieVM.swift; sourceTree = "<group>"; };
 		EF52722D25B2AAAC0025AB39 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		EF57E09D25B5428B00B2A5A2 /* Trailers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trailers.swift; sourceTree = "<group>"; };
 		EF6AC4DD25B507C3003A109F /* TrailerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailerVC.swift; sourceTree = "<group>"; };
 		EF6AC4DE25B507C3003A109F /* TrailerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrailerVC.xib; sourceTree = "<group>"; };
 		EFB4A25825B0B40900B74754 /* TMDBChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TMDBChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -239,6 +241,7 @@
 			children = (
 				EFB4A2BC25B0B75700B74754 /* Movies.swift */,
 				EFB4A2C125B0B77C00B74754 /* SelectedMovie.swift */,
+				EF57E09D25B5428B00B2A5A2 /* Trailers.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -436,6 +439,7 @@
 				EF52722E25B2AAAC0025AB39 /* ActivityIndicator.swift in Sources */,
 				EF4CFB2425B1E35400D9BCAC /* SelectedMovieVC.swift in Sources */,
 				EF18176725B0F7ED00F15B52 /* MoviesHeader.swift in Sources */,
+				EF57E09E25B5428B00B2A5A2 /* Trailers.swift in Sources */,
 				EFB4A2B325B0B6B900B74754 /* PlistService.swift in Sources */,
 				EF18175225B0F14000F15B52 /* Languages.swift in Sources */,
 				EFB4A2E725B0C74600B74754 /* MoviesVM.swift in Sources */,

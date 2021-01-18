@@ -8,7 +8,7 @@
 import UIKit
 
 class SelectedMovieVC: UIViewController {
-
+    
     //MARK:- Outlets
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var posterImageView: UIImageView!
@@ -30,6 +30,7 @@ class SelectedMovieVC: UIViewController {
     var movieId: Int?
     var viewModel: SelectedMovieViewModel?
     var backdropUrl: String?
+    var trailerId: String?
     
     //MARK:- LifeCycle
     
@@ -61,7 +62,8 @@ extension SelectedMovieVC {
     
     private func loadMovieDetails(){
         guard let movieId = movieId else { return }
-        guard let currentLanguage = UserDefaults.standard.string(forKey: "app_lang")  else { return }
+        guard let currentLanguage = UserDefaults.standard.string(forKey: Keys.APP_LANGUAGE)  else { return }
+        showActivityIndicator()
         
         MovieService.shared.getSelectedMovie(movieId: movieId, language: currentLanguage) { [weak self] response in
             guard let self = self else { return }
@@ -83,15 +85,27 @@ extension SelectedMovieVC {
         }
         
         guard let posterURL = backdropUrl else { return }
-        showActivityIndicator()
         MovieService.shared.getImage(from: posterURL, completed: { image in
             DispatchQueue.main.async {
                 self.hideActivityIndicator()
-                self.playTrailerView.isHidden = false
-                ViewProperties.animateBounceEffect(backgroundView: self.playTrailerView)
                 self.posterImageView.image = image != nil ? image : Images.emptyImage
             }
         })
+        
+        MovieService.shared.getTrailers(movieId: movieId, language: currentLanguage) { [weak self] response in
+            guard let self = self else { return }
+            switch response {
+            case .success(let movieTrailers):
+                DispatchQueue.main.async {
+                    guard ((movieTrailers.first?.key) != nil) else { return }
+                    self.trailerId = movieTrailers.first?.key
+                    self.playTrailerView.isHidden = false
+                    ViewProperties.animateBounceEffect(backgroundView: self.playTrailerView)
+                }
+            case .failure:
+                self.hideActivityIndicator()
+            }
+        }
     }
     
     @IBAction func closeButtonTapped(_ sender: Any) {
@@ -99,6 +113,9 @@ extension SelectedMovieVC {
     }
     
     @IBAction func trailerButtonTapped(_ sender: Any) {
-        self.present(TrailerVC.init(), animated: true, completion: nil)
+        guard let trailerId = trailerId else { return }
+        let trailerVC = TrailerVC(trailerId: trailerId)
+        
+        self.present(trailerVC, animated: true, completion: nil)
     }
 }

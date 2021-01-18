@@ -20,6 +20,7 @@ struct ApiURL {
     static let baseURL = "https://api.themoviedb.org/3/movie/"
     static let selectedMovie = baseURL
     static let image = "https://image.tmdb.org/t/p/"
+    static let youtubeURL = "https://www.youtube.com/embed/"
 }
 
 struct Images {
