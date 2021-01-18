@@ -22,7 +22,7 @@ struct SelectedMovie: Codable {
 /**
  Entity  that represents a single `Genre` property from the `genreList`
  */
-struct Genre: Codable {
+struct Genre: Codable, Equatable {
     var id: Int
     var name: String
 }
