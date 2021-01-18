@@ -17,6 +17,8 @@
 		EF4CFB2D25B21C0200D9BCAC /* ViewProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4CFB2C25B21C0200D9BCAC /* ViewProperties.swift */; };
 		EF4CFB3225B21CE700D9BCAC /* SelectedMovieVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4CFB3125B21CE700D9BCAC /* SelectedMovieVM.swift */; };
 		EF52722E25B2AAAC0025AB39 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF52722D25B2AAAC0025AB39 /* ActivityIndicator.swift */; };
+		EF6AC4DF25B507C3003A109F /* TrailerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6AC4DD25B507C3003A109F /* TrailerVC.swift */; };
+		EF6AC4E025B507C3003A109F /* TrailerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF6AC4DE25B507C3003A109F /* TrailerVC.xib */; };
 		EFB4A25C25B0B40900B74754 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB4A25B25B0B40900B74754 /* AppDelegate.swift */; };
 		EFB4A25E25B0B40900B74754 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB4A25D25B0B40900B74754 /* SceneDelegate.swift */; };
 		EFB4A26525B0B40A00B74754 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFB4A26425B0B40A00B74754 /* Assets.xcassets */; };
@@ -67,6 +69,8 @@
 		EF4CFB2C25B21C0200D9BCAC /* ViewProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProperties.swift; sourceTree = "<group>"; };
 		EF4CFB3125B21CE700D9BCAC /* SelectedMovieVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedMovieVM.swift; sourceTree = "<group>"; };
 		EF52722D25B2AAAC0025AB39 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		EF6AC4DD25B507C3003A109F /* TrailerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailerVC.swift; sourceTree = "<group>"; };
+		EF6AC4DE25B507C3003A109F /* TrailerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrailerVC.xib; sourceTree = "<group>"; };
 		EFB4A25825B0B40900B74754 /* TMDBChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TMDBChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFB4A25B25B0B40900B74754 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFB4A25D25B0B40900B74754 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -216,16 +220,18 @@
 			children = (
 				EFB4A2E525B0C72B00B74754 /* Movies */,
 				EF4CFB2125B1E33200D9BCAC /* Selected Movie */,
-				EFB4A29025B0B4C200B74754 /* iPhone */,
+				EFB4A29025B0B4C200B74754 /* Trailer */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
 		};
-		EFB4A29025B0B4C200B74754 /* iPhone */ = {
+		EFB4A29025B0B4C200B74754 /* Trailer */ = {
 			isa = PBXGroup;
 			children = (
+				EF6AC4DD25B507C3003A109F /* TrailerVC.swift */,
+				EF6AC4DE25B507C3003A109F /* TrailerVC.xib */,
 			);
-			path = iPhone;
+			path = Trailer;
 			sourceTree = "<group>";
 		};
 		EFB4A29125B0B4C700B74754 /* Models */ = {
@@ -393,6 +399,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF18174425B0F0AC00F15B52 /* Localizable.strings in Resources */,
+				EF6AC4E025B507C3003A109F /* TrailerVC.xib in Resources */,
 				EFB4A2DE25B0C70000B74754 /* MovieCell.xib in Resources */,
 				EFB4A26825B0B40A00B74754 /* LaunchScreen.storyboard in Resources */,
 				EFB4A26525B0B40A00B74754 /* Assets.xcassets in Resources */,
@@ -434,6 +441,7 @@
 				EFB4A2E725B0C74600B74754 /* MoviesVM.swift in Sources */,
 				EFB4A2C225B0B77C00B74754 /* SelectedMovie.swift in Sources */,
 				EFB4A2D525B0B88C00B74754 /* MoviesVC.swift in Sources */,
+				EF6AC4DF25B507C3003A109F /* TrailerVC.swift in Sources */,
 				EFB4A2BD25B0B75700B74754 /* Movies.swift in Sources */,
 				EFB4A25E25B0B40900B74754 /* SceneDelegate.swift in Sources */,
 				EFB4A2AE25B0B5F500B74754 /* Constants.swift in Sources */,

@@ -19,8 +19,8 @@ class SelectedMovieVC: UIViewController {
     @IBOutlet weak var summaryView: UIView!
     @IBOutlet weak var summaryTextView: UITextView!
     @IBOutlet weak var closeButtonView: UIView!
-    @IBOutlet weak var trailerView: UIView!
-    @IBOutlet weak var trailerLabel: UILabel!
+    @IBOutlet weak var playTrailerView: UIView!
+    @IBOutlet weak var playTrailerLabel: UILabel!
     @IBOutlet weak var posterLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var posterTrailingConstraint: NSLayoutConstraint!
     @IBOutlet weak var trailerViewConstraint: NSLayoutConstraint!
@@ -49,7 +49,7 @@ extension SelectedMovieVC {
     
     private func setupVC() {
         ViewProperties.configureCircularViewWithShadow(backgroundView: closeButtonView)
-        ViewProperties.configureViewWithRoundBorderAndShadow(backgroundView: trailerView)
+        ViewProperties.configureViewWithRoundBorderAndShadow(backgroundView: playTrailerView)
         if UIDevice.current.userInterfaceIdiom == .pad {
             posterLeadingConstraint.constant = self.view.bounds.width / 3
             posterTrailingConstraint.constant = self.view.bounds.width / 3
@@ -77,7 +77,8 @@ extension SelectedMovieVC {
                     self.summaryTextView.text = self.viewModel?.overview
                     self.genresLabel.text = self.viewModel?.allGenres
                 }
-            case .failure: break
+            case .failure:
+                self.hideActivityIndicator()
             }
         }
         
@@ -86,8 +87,8 @@ extension SelectedMovieVC {
         MovieService.shared.getImage(from: posterURL, completed: { image in
             DispatchQueue.main.async {
                 self.hideActivityIndicator()
-                self.trailerView.isHidden = false
-                ViewProperties.animateBounceEffect(backgroundView: self.trailerView)
+                self.playTrailerView.isHidden = false
+                ViewProperties.animateBounceEffect(backgroundView: self.playTrailerView)
                 self.posterImageView.image = image != nil ? image : Images.emptyImage
             }
         })
@@ -95,5 +96,9 @@ extension SelectedMovieVC {
     
     @IBAction func closeButtonTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func trailerButtonTapped(_ sender: Any) {
+        self.present(TrailerVC.init(), animated: true, completion: nil)
     }
 }

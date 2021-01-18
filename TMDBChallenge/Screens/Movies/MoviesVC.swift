@@ -52,8 +52,13 @@ extension MoviesVC {
         
         self.navigationController?.navigationBar.isHidden = true
         
-        let orientation = UIInterfaceOrientation.portrait.rawValue
-        UIDevice.current.setValue(orientation, forKey: Keys.ORIENTATION )
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            let orientation = UIInterfaceOrientation.landscapeLeft.rawValue
+            UIDevice.current.setValue(orientation, forKey: Keys.ORIENTATION )
+        } else {
+            let orientation = UIInterfaceOrientation.portrait.rawValue
+            UIDevice.current.setValue(orientation, forKey: Keys.ORIENTATION )
+        }
     }
     
     private func setupPullToRefresh(){

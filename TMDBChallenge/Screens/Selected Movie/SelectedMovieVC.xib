@@ -12,6 +12,8 @@
             <connections>
                 <outlet property="closeButtonView" destination="exY-GF-5Ok" id="cpg-mY-s7t"/>
                 <outlet property="genresLabel" destination="UNB-je-WVe" id="BWC-9Y-c0l"/>
+                <outlet property="playTrailerLabel" destination="owg-ug-BrL" id="6nr-Yp-9wF"/>
+                <outlet property="playTrailerView" destination="O1K-EE-Mmc" id="kwN-QA-YiH"/>
                 <outlet property="posterImageView" destination="GVW-w5-ndR" id="ygs-6M-l7d"/>
                 <outlet property="posterLeadingConstraint" destination="PIM-fF-vZG" id="OoM-x2-XbW"/>
                 <outlet property="posterTrailingConstraint" destination="deB-TQ-TQp" id="VVr-oW-Wjs"/>
@@ -20,8 +22,6 @@
                 <outlet property="summaryTextView" destination="wJs-Ox-xct" id="gor-y6-aS9"/>
                 <outlet property="summaryView" destination="3vt-6r-NUc" id="XCi-35-ADj"/>
                 <outlet property="titleLabel" destination="EtK-f2-OWX" id="YdX-hT-mzV"/>
-                <outlet property="trailerLabel" destination="owg-ug-BrL" id="6nr-Yp-9wF"/>
-                <outlet property="trailerView" destination="O1K-EE-Mmc" id="kwN-QA-YiH"/>
                 <outlet property="trailerViewConstraint" destination="B8A-7F-UHM" id="UF3-Uu-gjp"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="yearLabel" destination="Xnw-uk-Uoh" id="Ing-Sr-ZmN"/>
@@ -75,6 +75,14 @@
                                                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O1K-EE-Mmc">
                                                             <rect key="frame" x="304" y="230" width="80" height="40"/>
                                                             <subviews>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="7UM-La-h6w">
+                                                                    <rect key="frame" x="0.0" y="4" width="80" height="32"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <state key="normal" title="Button"/>
+                                                                    <connections>
+                                                                        <action selector="trailerButtonTapped:" destination="-1" eventType="touchUpInside" id="uOa-fy-7IK"/>
+                                                                    </connections>
+                                                                </button>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trailer" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="owg-ug-BrL">
                                                                     <rect key="frame" x="37" y="4" width="39" height="32"/>
                                                                     <fontDescription key="fontDescription" name="AppleSymbols" family="Apple Symbols" pointSize="16"/>
