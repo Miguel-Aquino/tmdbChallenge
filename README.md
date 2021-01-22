@@ -9,6 +9,7 @@ To run the project simply open the "TMDBChallenge.xcodeproj".
 
 ## Features
 
+- MVVM Architecture
 - Multiple language support
 - Support for `Light` and `Dark` mode
 - Support for `iPad` and `iPhone` devices
